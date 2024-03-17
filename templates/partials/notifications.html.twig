@@ -1,0 +1,25 @@
+{% if app.request.hasPreviousSession %}
+    <div class="fixed bottom-0 left-0 right-0 z-50">
+        {% for message in app.flashes('success') %}
+            <div class="p-4 mb-2 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800 mx-4 mt-4 flex justify-between items-center"
+                 role="alert">
+                {{ message }}
+                <button onclick="dismissFlashMessage(this)" class="text-green-700 dark:text-green-800">
+                    <span class="sr-only">Close</span>
+                    &times;
+                </button>
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('error') %}
+            <div class="p-4 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 mx-4 mt-4 flex justify-between items-center"
+                 role="alert">
+                {{ message }}
+                <button onclick="dismissFlashMessage(this)" class="text-red-700 dark:text-red-800">
+                    <span class="sr-only">Close</span>
+                    &times;
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
