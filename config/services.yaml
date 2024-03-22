@@ -26,3 +26,11 @@ services:
     App\Service\UploadService:
         arguments:
             $upload_directory: '%kernel.project_dir%/public/uploads'
+
+    App\Service\ExcelProcessorService:
+        arguments:
+            $upload_directory: '%kernel.project_dir%/public/uploads'
+
+    App\Service\ServerListService:
+        arguments:
+            $upload_directory: '%kernel.project_dir%/public/uploads'
