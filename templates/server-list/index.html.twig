@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Server Information - List{% endblock %}
+
+{% block body %}
+    {% include 'partials/header.html.twig' %}
+
+    <div id="comparison-results" class="hidden"></div>
+    <div id="swap-results" class="hidden"></div>
+
+    {% block content %}
+        <div class="flex relative w-full h-screen">
+            <!-- Sidebar for filters -->
+            <div class="w-1/4 bg-gray-100 p-4">
+                <div class="bg-white shadow rounded-lg p-6" id="server-list-filters"
+                     hx-get="{{ path('app_server_list_filters') }}" hx-trigger="load">
+                    <h3 class="font-bold text-xl mb-4 text-gray-700">Filters</h3>
+                    <p>Loading Filters...</p>
+                </div>
+            </div>
+
+            {% include 'server-list/table.html.twig' %}
+        </div>
+    {% endblock %}
+
+    {% include 'partials/footer.html.twig' %}
+{% endblock %}

@@ -26,7 +26,11 @@ class UploadController extends AbstractController
 
                     $this->addFlash('success', 'Your file has been uploaded successfully');
 
-                    return $this->redirectToRoute('app_server_list');
+                    $response = $this->render('upload/index.html.twig', [
+                        'form' => $form->createView(),
+                    ]);
+                    $response->headers->set('HX-Redirect', $this->generateUrl('app_server_list_index'));
+                    return $response;
                 } catch (\Exception) {
                     $this->addFlash('error', 'An error occurred while uploading the file');
                     return $this->render('upload/index.html.twig', [

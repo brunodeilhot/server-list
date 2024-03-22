@@ -1,0 +1,45 @@
+<div hx-target="#server-list" hx-trigger="change" hx-get="{{ path('app_server_list') }}" hx-include="[name='storage'],[name='ram[]'],[name='location'],[name='hddType']">
+    <h3 class="font-bold text-xl mb-4 text-gray-700">Filters</h3>
+    <div class="mb-4">
+        <!-- Storage filter -->
+        <label for="storage-filter" class="block text-gray-700 text-sm font-bold mb-2">Storage:</label>
+        <input type="range" id="storage-filter" name="storage" min="0" max={{ serverFilters.storage|length - 1 }} step="1" value="{{ serverFilters.storage|length - 1 }}" class="block w-full mb-4" list="storage-steps">
+        <div class="flex justify-between text-xs text-gray-600">
+            {% set step = serverFilters.storage|length // 6 %}
+            {% for i in 0..6 %}
+                {% set index = (i * step) < serverFilters.storage|length ? (i * step) : serverFilters.storage|length - 1 %}
+                <div>{{ serverFilters.storage[index] }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="mb-4">
+        <!-- RAM filter -->
+        <label class="block text-gray-700 text-sm font-bold mb-2">RAM:</label>
+        {% for ram in serverFilters.ram %}
+            <div>
+                <input type="checkbox" id="ram-filter-{{ ram }}" name="ram[]" value="{{ ram }}">
+                <label for="ram-filter-{{ ram }}" class="ml-2 text-gray-700 text-sm">{{ ram }}</label>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="mb-4">
+        <!-- Harddisk type filter -->
+        <label for="harddisk-type-filter" class="block text-gray-700 text-sm font-bold mb-2">Harddisk type:</label>
+        <select id="harddisk-type-filter" class="block w-full mb-4 p-2 rounded-lg" name="hddType">
+            <option value="">Select harddisk type...</option>
+            {% for type in serverFilters.hddType %}
+                <option value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <!-- Location filter -->
+        <label for="location-filter" class="block text-gray-700 text-sm font-bold mb-2">Location:</label>
+        <select id="location-filter" class="block w-full mb-4 p-2 rounded-lg" name="location">
+            <option value="">Select location...</option>
+            {% for location in serverFilters.location %}
+                <option value="{{ location }}">{{ location }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>

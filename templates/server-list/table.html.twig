@@ -1,0 +1,35 @@
+<div class="px-4 sm:px-6 lg:px-8 relative">
+    <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+            <p class="mt-2 text-sm text-gray-700">A list of all the servers including their model, RAM, HDD, location,
+                and price.</p>
+        </div>
+    </div>
+    <div class="mt-8 flow-root">
+        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                <table class="min-w-full divide-y divide-gray-300">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="w-9 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                        </th>
+                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                            Model
+                        </th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">RAM</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">HDD</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Location</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200" id="server-list" hx-get="{{ path('app_server_list') }}"
+                           hx-trigger="load">
+                    <tr>
+                        <td colspan="5" class="px-3 py-4 text-sm text-gray-500">Loading data...</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{% for server in serverList %}
+    <tr>
+        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ server.model }}</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ server.ramSize }} {{ server.ramType }}</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ server.hddSize }} {{ server.hddType }}</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ server.location }}</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ server.price }}</td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="5" class="px-3 py-4 text-sm text-gray-500">No servers found.</td>
+    </tr>
+{% endfor %}
